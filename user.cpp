@@ -13,12 +13,19 @@ user::user(unsigned int userID)
     _borrowedBookCount = 0; // a freshly registered user has no books borrowed
 }
 
-unsigned int user::getUserID()
+bool operator==(const user& u1, const user& u2)
 {
-    return _userID;
+	if (u1.getUserID() == u2.getUserID())
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
 }
 
-bool user::borrowBook(unsigned long isbn)
+bool user::borrowBook(book *b)
 {
     if(_borrowedBookCount == 10)
     {
@@ -27,21 +34,23 @@ bool user::borrowBook(unsigned long isbn)
 
     _borrowedBookCount++;
     
-    _borrowedBooks.push_back(isbn);
+    _borrowedBooks.push_back(b);
 
     return true;
 }
 
-bool user::returnBook(unsigned long isbn)
+bool user::returnBook(book *b)
 {
-    auto position = std::find(_borrowedBooks.begin(), _borrowedBooks.end(), isbn);
-    
-    if(position == _borrowedBooks.end())
+	std::vector<book*>::iterator iterator = std::find(_borrowedBooks.begin(), _borrowedBooks.end(), b);
+
+    if(iterator == _borrowedBooks.end())
     {
         return false;
     }
 
-    _borrowedBooks.erase(position);
+	b->bringBack();
+
+    _borrowedBooks.erase(iterator);
 
     _borrowedBookCount--;
 
@@ -54,11 +63,11 @@ bool user::returnBook(unsigned long isbn)
  * !!: the returned vector is a copy of the internal
  * structure to avoid unwanted internal changes
  */
-std::vector<unsigned long> user::getBorrowedBooks()
+std::vector<book*> user::getBorrowedBooks()
 {
     // create a hard copy of the borrowed books
     // to avoid returning references to our internal data structure
-    std::vector<unsigned long> copyOfBorrowedBooks(_borrowedBooks);
+    std::vector<book*> copyOfBorrowedBooks(_borrowedBooks);
 
     return copyOfBorrowedBooks;
 }

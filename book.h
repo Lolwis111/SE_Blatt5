@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include "user.h"
 
 class book
 {
@@ -10,17 +11,26 @@ private:
 
     bool _isBorrowed;
     bool _isRetired;
-    int _timesBorrowed;
+    unsigned int _timesBorrowed;
+
+	user *_borrowedBy;
 
 public:
-    book(std::string title, std::string author, unsigned long isbn);//
-    //~book();
+    book(std::string title, std::string author, unsigned long isbn);
 
-    bool borrow();//
+    bool borrow(user *user);
+	bool bringBack();
 
-    std::string getTitle();//
-    std::string getAuthor();//
-    unsigned long getISBN();//
+	std::string getTitle() const { return _title; };
+    std::string getAuthor() const { return _author; };
 
-    std::string toString();//
+    unsigned long getISBN() const { return _isbn; };
+
+	bool isRetired() const { return _isRetired; };
+	bool isBorrowed() const { return _isBorrowed; };
+
+	unsigned int timesBorrowed() const { return _timesBorrowed; };
+	user *getBorrowingUser() const { return _borrowedBy;  };
+
+    std::string toString();
 };

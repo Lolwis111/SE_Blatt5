@@ -9,15 +9,15 @@ private:
     unsigned int _userID;
 
     int _borrowedBookCount;
-    std::vector<unsigned long> _borrowedBooks;
+    std::vector<book*> _borrowedBooks;
 
 public:
     user(unsigned int userID);
 
-    unsigned int getUserID();
+	unsigned int getUserID() const { return _userID; }
 
-    bool borrowBook(unsigned long isbn);
-    bool returnBook(unsigned long isbn);
+    bool borrowBook(book *book);
+    bool returnBook(book *book);
 
-    std::vector<unsigned long> getBorrowedBooks();
+    std::vector<book*> getBorrowedBooks();
 };

@@ -7,13 +7,38 @@
  */
 book::book(std::string title, std::string author, unsigned long isbn)
 {
+	_borrowedBy = nullptr;
     _author = author;
     _title = title;
     _isbn = isbn;
-    
+
     _isRetired = false; // a new book is new and therefore not retiered
     _isBorrowed = false; // on  creation a book is not borrowed to anyone
     _timesBorrowed = 0; // a new book has never been borrowed before
+}
+
+bool operator==(const book& b1, const book& b2)
+{
+	if (b1.getISBN() == b2.getISBN())
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+bool operator<(const book& b1, const book& b2)
+{
+	if (b1.getISBN() < b2.getISBN())
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
 }
 
 /**
@@ -21,15 +46,8 @@ book::book(std::string title, std::string author, unsigned long isbn)
  * this will set the internal variables to indicate that this book is borrowed
  * this will also update the times this is borrowed and retieres the book if needed
  */
-bool book::borrow()
+bool book::borrow(user *user)
 {
-    if(_timesBorrowed == 50)
-    {
-        _isRetired = true;
-
-        return false;
-    }
-
     if(_isBorrowed == true || _isRetired == true)
     {
         return false;
@@ -37,29 +55,36 @@ bool book::borrow()
 
     _isBorrowed = true;
 
+	_borrowedBy = user;
+
     _timesBorrowed++;
     
     return true;
+}
+
+/**
+ * bring this book back
+ * this will set the internal status to not borrowed
+ * returns false if the book is currently not borrowed
+ */
+bool book::bringBack()
+{ 
+	if (_isBorrowed == false)
+	{
+		return false;
+	}
+
+	if (_timesBorrowed == 50)
+	{
+		_isRetired = true;
+	}
+
+	_isBorrowed = false;
+
+	return true;
 }
 
 std::string book::toString()
 {
     return _author + ": " + _title + " (" + std::to_string(_isbn) + ")";
 }
-
-/** begin of public property section */
-std::string book::getTitle()
-{
-    return _title;
-}
-
-std::string book::getAuthor()
-{
-    return _author;
-}
-
-unsigned long book::getISBN()
-{
-    return _isbn;
-}
-/** end of public property section */
