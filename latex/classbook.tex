@@ -1,0 +1,124 @@
+\hypertarget{classbook}{}\subsection{book Class Reference}
+\label{classbook}\index{book@{book}}
+
+
+{\ttfamily \#include $<$book.\+h$>$}
+
+\subsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classbook_a5114952cb9ce13311c70a7da4a84f65e}{book} (std\+::string title, std\+::string author, unsigned long isbn)
+\item 
+bool \hyperlink{classbook_a25a20807ec84c3dd73a2633a4765d1bf}{borrow} (unsigned long user\+ID)
+\item 
+bool \hyperlink{classbook_a0db6fec61d11dfb27f20403569289bbb}{bring\+Back} ()
+\item 
+\mbox{\Hypertarget{classbook_a467791863f6159f6e2cd5ae1486d3f6d}\label{classbook_a467791863f6159f6e2cd5ae1486d3f6d}} 
+std\+::string {\bfseries get\+Title} () const
+\item 
+\mbox{\Hypertarget{classbook_a760484e4bc14cb11cec145739747f22a}\label{classbook_a760484e4bc14cb11cec145739747f22a}} 
+std\+::string {\bfseries get\+Author} () const
+\item 
+\mbox{\Hypertarget{classbook_a5838258e345c651f1cb899417f56a1e7}\label{classbook_a5838258e345c651f1cb899417f56a1e7}} 
+unsigned long {\bfseries get\+I\+S\+BN} () const
+\item 
+\mbox{\Hypertarget{classbook_ae4499dba0f39ea4136d670d298bf56af}\label{classbook_ae4499dba0f39ea4136d670d298bf56af}} 
+bool {\bfseries is\+Retired} () const
+\item 
+\mbox{\Hypertarget{classbook_aa76dd75565c10ec36c0f4649341b4fa1}\label{classbook_aa76dd75565c10ec36c0f4649341b4fa1}} 
+bool {\bfseries is\+Borrowed} () const
+\item 
+\mbox{\Hypertarget{classbook_a58f5e200f3433fec3536a0d1c47df6ba}\label{classbook_a58f5e200f3433fec3536a0d1c47df6ba}} 
+unsigned int {\bfseries get\+Times\+Borrowed} () const
+\item 
+\mbox{\Hypertarget{classbook_a2667d5ddba56407c1439128ed2d3add2}\label{classbook_a2667d5ddba56407c1439128ed2d3add2}} 
+unsigned long {\bfseries get\+Borrowing\+User\+ID} () const
+\item 
+std\+::string \hyperlink{classbook_ac673df10b3812cf593f02a7c9967a947}{to\+String} ()
+\item 
+bool \hyperlink{classbook_a373aa61d941709b14481d3515cc229fe}{operator$<$} (const \hyperlink{classbook}{book} \&other) const
+\item 
+bool \hyperlink{classbook_a6b9ded1510aa5ca62f00f5cbc650200e}{operator==} (const \hyperlink{classbook}{book} \&other) const
+\end{DoxyCompactItemize}
+
+
+\subsubsection{Detailed Description}
+book provides the representation of a book each book has a title, an author and an isb number the isb number is supposed to be unique 
+
+\subsubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classbook_a5114952cb9ce13311c70a7da4a84f65e}\label{classbook_a5114952cb9ce13311c70a7da4a84f65e}} 
+\index{book@{book}!book@{book}}
+\index{book@{book}!book@{book}}
+\paragraph{\texorpdfstring{book()}{book()}}
+{\footnotesize\ttfamily book\+::book (\begin{DoxyParamCaption}\item[{std\+::string}]{title,  }\item[{std\+::string}]{author,  }\item[{unsigned long}]{isbn }\end{DoxyParamCaption})}
+
+Create a new book object
+
+
+\begin{DoxyParams}{Parameters}
+{\em title} & The title of the book \\
+\hline
+{\em author} & The author of the book \\
+\hline
+{\em isbn} & The unique isb number of the book \\
+\hline
+\end{DoxyParams}
+
+
+\subsubsection{Member Function Documentation}
+\mbox{\Hypertarget{classbook_a25a20807ec84c3dd73a2633a4765d1bf}\label{classbook_a25a20807ec84c3dd73a2633a4765d1bf}} 
+\index{book@{book}!borrow@{borrow}}
+\index{borrow@{borrow}!book@{book}}
+\paragraph{\texorpdfstring{borrow()}{borrow()}}
+{\footnotesize\ttfamily bool book\+::borrow (\begin{DoxyParamCaption}\item[{unsigned long}]{user\+ID }\end{DoxyParamCaption})}
+
+borrow this book this will set the internal variables to indicate that this book is borrowed this will also update the times this is borrowed and retieres the book if needed
+
+
+\begin{DoxyParams}{Parameters}
+{\em user\+ID} & the ID of the user who wants to borrow this book \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the borrowing was successful, false if the book is already borrowed or retired 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classbook_a0db6fec61d11dfb27f20403569289bbb}\label{classbook_a0db6fec61d11dfb27f20403569289bbb}} 
+\index{book@{book}!bring\+Back@{bring\+Back}}
+\index{bring\+Back@{bring\+Back}!book@{book}}
+\paragraph{\texorpdfstring{bring\+Back()}{bringBack()}}
+{\footnotesize\ttfamily bool book\+::bring\+Back (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+bring this book back this will set the internal status to not borrowed will also manage the retirement process
+
+\begin{DoxyReturn}{Returns}
+true on success, false if the book is currently not borrowed 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classbook_a373aa61d941709b14481d3515cc229fe}\label{classbook_a373aa61d941709b14481d3515cc229fe}} 
+\index{book@{book}!operator$<$@{operator$<$}}
+\index{operator$<$@{operator$<$}!book@{book}}
+\paragraph{\texorpdfstring{operator$<$()}{operator<()}}
+{\footnotesize\ttfamily bool book\+::operator$<$ (\begin{DoxyParamCaption}\item[{const \hyperlink{classbook}{book} \&}]{other }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+the $<$ operator is valid on a book a book is smaller than a book if its isb number is smaller \mbox{\Hypertarget{classbook_a6b9ded1510aa5ca62f00f5cbc650200e}\label{classbook_a6b9ded1510aa5ca62f00f5cbc650200e}} 
+\index{book@{book}!operator==@{operator==}}
+\index{operator==@{operator==}!book@{book}}
+\paragraph{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily bool book\+::operator== (\begin{DoxyParamCaption}\item[{const \hyperlink{classbook}{book} \&}]{other }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+the == operator is valid on a book a book is equal to another book if their isb numbers are equal \mbox{\Hypertarget{classbook_ac673df10b3812cf593f02a7c9967a947}\label{classbook_ac673df10b3812cf593f02a7c9967a947}} 
+\index{book@{book}!to\+String@{to\+String}}
+\index{to\+String@{to\+String}!book@{book}}
+\paragraph{\texorpdfstring{to\+String()}{toString()}}
+{\footnotesize\ttfamily std\+::string book\+::to\+String (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Creates a string representation of this book
+
+\begin{DoxyReturn}{Returns}
+String in form \mbox{[}author\mbox{]}\+: \mbox{[}title\mbox{]} (\mbox{[}isbn\mbox{]}) 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+book.\+h\item 
+book.\+cpp\end{DoxyCompactItemize}

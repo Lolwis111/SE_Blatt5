@@ -1,0 +1,228 @@
+\hypertarget{classlibrary}{}\subsection{library Class Reference}
+\label{classlibrary}\index{library@{library}}
+
+
+{\ttfamily \#include $<$library.\+h$>$}
+
+\subsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classlibrary_a2137d3edeea39929e8f111432c85bc79}{library} ()
+\item 
+\mbox{\Hypertarget{classlibrary_acdb3a97354a845aa6c268ab31face0b4}\label{classlibrary_acdb3a97354a845aa6c268ab31face0b4}} 
+unsigned int {\bfseries get\+Book\+Count} () const
+\item 
+\mbox{\Hypertarget{classlibrary_aa4b7a16debf823ed29e5f216d8fe8b75}\label{classlibrary_aa4b7a16debf823ed29e5f216d8fe8b75}} 
+unsigned int {\bfseries get\+User\+Count} () const
+\item 
+unsigned int \hyperlink{classlibrary_aa6ec346e2b49ee2a78b1c8f5ebbf7f79}{register\+User} (std\+::string name, std\+::string address)
+\item 
+\hyperlink{classuser}{user} $\ast$ \hyperlink{classlibrary_a6c04fa5207a2dc59e00882cb9aa66eb1}{find\+User\+By\+Id} (unsigned int user\+ID)
+\item 
+void \hyperlink{classlibrary_a820b95e5a2738e923c6609ea68517286}{wish\+For\+A\+Book} (\hyperlink{classuser}{user} wishing\+User, \hyperlink{classbook}{book} book\+Wished\+For)
+\item 
+void \hyperlink{classlibrary_abe4fe5bfd3355630fedbefd7828ee03e}{add\+Book\+To\+Library} (\hyperlink{classbook}{book} book\+To\+Add)
+\item 
+bool \hyperlink{classlibrary_a72e06b28f9282c81bfb0760b0c07ffba}{borrow\+Book} (\hyperlink{classbook}{book} $\ast$book\+To\+Borrow, \hyperlink{classuser}{user} $\ast$borrowing\+User)
+\item 
+bool \hyperlink{classlibrary_ac96feb544ebc882b53457ccbcf8f9196}{return\+Book} (\hyperlink{classbook}{book} $\ast$book\+To\+Return, \hyperlink{classuser}{user} $\ast$borrowing\+User)
+\item 
+std\+::vector$<$ \hyperlink{classbook}{book} $>$ \hyperlink{classlibrary_a923bf0a858616abc8fb3f536a4d69cf6}{get\+All\+Books} ()
+\item 
+std\+::vector$<$ \hyperlink{classuser}{user} $>$ \hyperlink{classlibrary_aa128a867b3ac05e2801d7c3dd5691038}{get\+All\+Users} ()
+\item 
+\hyperlink{classuser}{user} $\ast$ \hyperlink{classlibrary_a6c3bdf1f2614b6b7459ebcc898f8636f}{get\+User\+Who\+Borrows\+Book} (\hyperlink{classbook}{book} book\+To\+Check)
+\item 
+unsigned int \hyperlink{classlibrary_a297c4813872bbba3f8088a4acc3f7b6d}{get\+Times\+Borrowed} (\hyperlink{classbook}{book} book\+To\+Check)
+\item 
+unsigned int \hyperlink{classlibrary_ae6b0c037908e328dcf3a9dfb946ed5f2}{get\+Times\+Wished\+For} (\hyperlink{classbook}{book} book\+To\+Check)
+\end{DoxyCompactItemize}
+
+
+\subsubsection{Detailed Description}
+library provides the main interface. This contains all the books and users. It also allows the A\+P\+I-\/user to create and manage users as well as books. 
+
+\subsubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classlibrary_a2137d3edeea39929e8f111432c85bc79}\label{classlibrary_a2137d3edeea39929e8f111432c85bc79}} 
+\index{library@{library}!library@{library}}
+\index{library@{library}!library@{library}}
+\paragraph{\texorpdfstring{library()}{library()}}
+{\footnotesize\ttfamily library\+::library (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+creates a new library with 0 registered users and 0 books 
+
+\subsubsection{Member Function Documentation}
+\mbox{\Hypertarget{classlibrary_abe4fe5bfd3355630fedbefd7828ee03e}\label{classlibrary_abe4fe5bfd3355630fedbefd7828ee03e}} 
+\index{library@{library}!add\+Book\+To\+Library@{add\+Book\+To\+Library}}
+\index{add\+Book\+To\+Library@{add\+Book\+To\+Library}!library@{library}}
+\paragraph{\texorpdfstring{add\+Book\+To\+Library()}{addBookToLibrary()}}
+{\footnotesize\ttfamily void library\+::add\+Book\+To\+Library (\begin{DoxyParamCaption}\item[{\hyperlink{classbook}{book}}]{book\+To\+Add }\end{DoxyParamCaption})}
+
+This method adds a given book to the library. Books that are already in the library will be ignored
+
+
+\begin{DoxyParams}{Parameters}
+{\em book\+To\+Add} & the book that should be added to the library \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classlibrary_a72e06b28f9282c81bfb0760b0c07ffba}\label{classlibrary_a72e06b28f9282c81bfb0760b0c07ffba}} 
+\index{library@{library}!borrow\+Book@{borrow\+Book}}
+\index{borrow\+Book@{borrow\+Book}!library@{library}}
+\paragraph{\texorpdfstring{borrow\+Book()}{borrowBook()}}
+{\footnotesize\ttfamily bool library\+::borrow\+Book (\begin{DoxyParamCaption}\item[{\hyperlink{classbook}{book} $\ast$}]{book\+To\+Borrow,  }\item[{\hyperlink{classuser}{user} $\ast$}]{borrowing\+User }\end{DoxyParamCaption})}
+
+This method allows a user to borrow book a from the library The method checks if the user is registerd and if the book is available in this library.
+
+
+\begin{DoxyParams}{Parameters}
+{\em book\+To\+Borrow} & A pointer to the book that should be borrowed \\
+\hline
+{\em borrowing\+User} & A pointer to the user that wants to borrow the book \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if successful, false if book not available or user not registered 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlibrary_a6c04fa5207a2dc59e00882cb9aa66eb1}\label{classlibrary_a6c04fa5207a2dc59e00882cb9aa66eb1}} 
+\index{library@{library}!find\+User\+By\+Id@{find\+User\+By\+Id}}
+\index{find\+User\+By\+Id@{find\+User\+By\+Id}!library@{library}}
+\paragraph{\texorpdfstring{find\+User\+By\+Id()}{findUserById()}}
+{\footnotesize\ttfamily \hyperlink{classuser}{user} $\ast$ library\+::find\+User\+By\+Id (\begin{DoxyParamCaption}\item[{unsigned int}]{user\+ID }\end{DoxyParamCaption})}
+
+Search by the user id for a user in the system
+
+
+\begin{DoxyParams}{Parameters}
+{\em user\+ID} & The user id that should be searched \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the user with the given id, or nullptr if no user with this id exists 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlibrary_a923bf0a858616abc8fb3f536a4d69cf6}\label{classlibrary_a923bf0a858616abc8fb3f536a4d69cf6}} 
+\index{library@{library}!get\+All\+Books@{get\+All\+Books}}
+\index{get\+All\+Books@{get\+All\+Books}!library@{library}}
+\paragraph{\texorpdfstring{get\+All\+Books()}{getAllBooks()}}
+{\footnotesize\ttfamily std\+::vector$<$ \hyperlink{classbook}{book} $>$ library\+::get\+All\+Books (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Return all books
+
+\begin{DoxyReturn}{Returns}
+a hard copy of the list of books that are currently available in the library 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlibrary_aa128a867b3ac05e2801d7c3dd5691038}\label{classlibrary_aa128a867b3ac05e2801d7c3dd5691038}} 
+\index{library@{library}!get\+All\+Users@{get\+All\+Users}}
+\index{get\+All\+Users@{get\+All\+Users}!library@{library}}
+\paragraph{\texorpdfstring{get\+All\+Users()}{getAllUsers()}}
+{\footnotesize\ttfamily std\+::vector$<$ \hyperlink{classuser}{user} $>$ library\+::get\+All\+Users (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Return all users
+
+\begin{DoxyReturn}{Returns}
+a hard copy of the list of users that are currently registered in the library 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlibrary_a297c4813872bbba3f8088a4acc3f7b6d}\label{classlibrary_a297c4813872bbba3f8088a4acc3f7b6d}} 
+\index{library@{library}!get\+Times\+Borrowed@{get\+Times\+Borrowed}}
+\index{get\+Times\+Borrowed@{get\+Times\+Borrowed}!library@{library}}
+\paragraph{\texorpdfstring{get\+Times\+Borrowed()}{getTimesBorrowed()}}
+{\footnotesize\ttfamily unsigned int library\+::get\+Times\+Borrowed (\begin{DoxyParamCaption}\item[{\hyperlink{classbook}{book}}]{book\+To\+Check }\end{DoxyParamCaption})}
+
+check how many times a book has been borrowed
+
+
+\begin{DoxyParams}{Parameters}
+{\em book\+To\+Check} & the book to check this on \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the number of times the book has been borrowed 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlibrary_ae6b0c037908e328dcf3a9dfb946ed5f2}\label{classlibrary_ae6b0c037908e328dcf3a9dfb946ed5f2}} 
+\index{library@{library}!get\+Times\+Wished\+For@{get\+Times\+Wished\+For}}
+\index{get\+Times\+Wished\+For@{get\+Times\+Wished\+For}!library@{library}}
+\paragraph{\texorpdfstring{get\+Times\+Wished\+For()}{getTimesWishedFor()}}
+{\footnotesize\ttfamily unsigned int library\+::get\+Times\+Wished\+For (\begin{DoxyParamCaption}\item[{\hyperlink{classbook}{book}}]{book\+To\+Check }\end{DoxyParamCaption})}
+
+check how many times users wished for a given book
+
+
+\begin{DoxyParams}{Parameters}
+{\em book\+To\+Check} & The book to check this on \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the number of times individual users wished for this book 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlibrary_a6c3bdf1f2614b6b7459ebcc898f8636f}\label{classlibrary_a6c3bdf1f2614b6b7459ebcc898f8636f}} 
+\index{library@{library}!get\+User\+Who\+Borrows\+Book@{get\+User\+Who\+Borrows\+Book}}
+\index{get\+User\+Who\+Borrows\+Book@{get\+User\+Who\+Borrows\+Book}!library@{library}}
+\paragraph{\texorpdfstring{get\+User\+Who\+Borrows\+Book()}{getUserWhoBorrowsBook()}}
+{\footnotesize\ttfamily \hyperlink{classuser}{user} $\ast$ library\+::get\+User\+Who\+Borrows\+Book (\begin{DoxyParamCaption}\item[{\hyperlink{classbook}{book}}]{borrowed\+Book }\end{DoxyParamCaption})}
+
+Given a book this will return which user currently borrows this book
+
+
+\begin{DoxyParams}{Parameters}
+{\em borrowed\+Book} & the book to check this on \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a pointer to the user that currently borrows this book 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlibrary_aa6ec346e2b49ee2a78b1c8f5ebbf7f79}\label{classlibrary_aa6ec346e2b49ee2a78b1c8f5ebbf7f79}} 
+\index{library@{library}!register\+User@{register\+User}}
+\index{register\+User@{register\+User}!library@{library}}
+\paragraph{\texorpdfstring{register\+User()}{registerUser()}}
+{\footnotesize\ttfamily unsigned int library\+::register\+User (\begin{DoxyParamCaption}\item[{std\+::string}]{name,  }\item[{std\+::string}]{address }\end{DoxyParamCaption})}
+
+This method registers a new user in this library
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & The name the new user has \\
+\hline
+{\em address} & The address the new user has \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the ID the new user will have 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlibrary_ac96feb544ebc882b53457ccbcf8f9196}\label{classlibrary_ac96feb544ebc882b53457ccbcf8f9196}} 
+\index{library@{library}!return\+Book@{return\+Book}}
+\index{return\+Book@{return\+Book}!library@{library}}
+\paragraph{\texorpdfstring{return\+Book()}{returnBook()}}
+{\footnotesize\ttfamily bool library\+::return\+Book (\begin{DoxyParamCaption}\item[{\hyperlink{classbook}{book} $\ast$}]{book\+To\+Return,  }\item[{\hyperlink{classuser}{user} $\ast$}]{borrowing\+User }\end{DoxyParamCaption})}
+
+This method allows a user to give a borrowed book back to the library The method checks if the user is registerd and if the book belongs to this library.
+
+
+\begin{DoxyParams}{Parameters}
+{\em book\+To\+Return} & A pointer to the book that the user wants to hand in \\
+\hline
+{\em borrowing\+User} & A pointer to user that currently borrows this book \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if successful, false if book does not belong to this library, or book is not being borrowed or user not registered 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlibrary_a820b95e5a2738e923c6609ea68517286}\label{classlibrary_a820b95e5a2738e923c6609ea68517286}} 
+\index{library@{library}!wish\+For\+A\+Book@{wish\+For\+A\+Book}}
+\index{wish\+For\+A\+Book@{wish\+For\+A\+Book}!library@{library}}
+\paragraph{\texorpdfstring{wish\+For\+A\+Book()}{wishForABook()}}
+{\footnotesize\ttfamily void library\+::wish\+For\+A\+Book (\begin{DoxyParamCaption}\item[{\hyperlink{classuser}{user}}]{wishing\+User,  }\item[{\hyperlink{classbook}{book}}]{book\+Wished\+For }\end{DoxyParamCaption})}
+
+This methods allows a user to wish for a certain book to be added to the library
+
+
+\begin{DoxyParams}{Parameters}
+{\em wishing\+User} & The user that wishes for the book \\
+\hline
+{\em book\+Wished\+For} & The book that the user wishes for \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+library.\+h\item 
+library.\+cpp\end{DoxyCompactItemize}

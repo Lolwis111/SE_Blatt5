@@ -2,43 +2,38 @@
 
 #include <string>
 #include <iostream>
+#include <vector>
 
+std::string boolToString(bool b)
+{
+    return (b ? "true" : "false");
+}
+
+/**
+ * the main function is only used to test this API
+ * it does not provide any real world applications
+ */
 int main()
 {
-	library lib1;
-    
-    book bookWeWishFor("My Favorite Book", "My Favorite Author", 1337);
-    
-    unsigned int user1 = lib1.registerUser();
-    unsigned int user2 = lib1.registerUser();
-    unsigned int user3 = lib1.registerUser();
-    unsigned int user4 = lib1.registerUser();
-    unsigned int user5 = lib1.registerUser();
+    library lib1;
 
-    unsigned int times = lib1.getTimesWishedFor(bookWeWishFor);
-    std::cerr << "getTimesWishedFor: expected 0 got " << times << std::endl;
-    
-    lib1.wishForABook(lib1.findUserById(user1), bookWeWishFor);
-    
-    times = lib1.getTimesWishedFor(bookWeWishFor);
-    std::cerr << "getTimesWishedFor: expected 1 got " << times << std::endl;
-    
-    lib1.wishForABook(lib1.findUserById(user2), bookWeWishFor);
-    
-    times = lib1.getTimesWishedFor(bookWeWishFor);
-    std::cerr << "getTimesWishedFor: expected 2 got " << times << std::endl;
-    
-    lib1.wishForABook(lib1.findUserById(user3), bookWeWishFor);
-    
-    times = lib1.getTimesWishedFor(bookWeWishFor);
-    std::cerr << "getTimesWishedFor: expected 3 got " << times << std::endl;
-    
-    lib1.wishForABook(lib1.findUserById(user4), bookWeWishFor);
-    
-    times = lib1.getTimesWishedFor(bookWeWishFor);
-    std::cerr << "getTimesWishedFor: expected 4 got " << times << std::endl;
-    
-    lib1.wishForABook(lib1.findUserById(user5), bookWeWishFor);
+    unsigned long userID = lib1.registerUser("Hans Mueller", "An der Adresse 1234");
 
+    user *user1 = lib1.findUserById(userID);
+
+    book book1("My Title", "My Author", 1234);
+
+    lib1.addBookToLibrary(book1);
+    
+    std::cout << "isRetired(): " << boolToString(book1.isRetired()) << std::endl;
+    
+    for(int i = 0; i <= 50; i++)
+    {
+        lib1.borrowBook(&book1, user1);
+        lib1.returnBook(&book1, user1);
+    }
+    
+    std::cout << "isRetired(): " << boolToString(book1.isRetired()) << std::endl;
+    
     return 0;
 }
