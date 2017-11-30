@@ -5,3 +5,6 @@
 /.vs/slnx.sqlite
 /.vs/ProjectSettings.json
 /.vs/SE_Blatt5/v15
+
+*.o
+library
