@@ -1,5 +1,6 @@
-\hypertarget{classuser}{}\subsection{user Class Reference}
+\hypertarget{classuser}{\subsection{user Class Reference}
 \label{classuser}\index{user@{user}}
+}
 
 
 {\ttfamily \#include $<$user.\+h$>$}
@@ -7,16 +8,13 @@
 \subsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{classuser_aeaedee1afa1e244cd27028ee2e37ab4d}{user} (unsigned int user\+ID, std\+::string name, std\+::string address)
+\hyperlink{classuser_aeaedee1afa1e244cd27028ee2e37ab4d}{user} (unsigned int user\+I\+D, std\+::string name, std\+::string address)
 \item 
-\mbox{\Hypertarget{classuser_adfd56d243ee0705b60b498d45111da7d}\label{classuser_adfd56d243ee0705b60b498d45111da7d}} 
-unsigned int {\bfseries get\+User\+ID} () const
+unsigned int \hyperlink{classuser_ad913a52f6e73e4e2fef4cdc28256f123}{get\+User\+I\+D} () const 
 \item 
-\mbox{\Hypertarget{classuser_a65ac3c6b086539a0033e62ae2180cc08}\label{classuser_a65ac3c6b086539a0033e62ae2180cc08}} 
-std\+::string {\bfseries get\+Name} () const
+std\+::string \hyperlink{classuser_abdaf43e8172ce998e02f3b2d8c52ea3a}{get\+Name} () const 
 \item 
-\mbox{\Hypertarget{classuser_ad78f65094cebd64788b47b734bc35d1b}\label{classuser_ad78f65094cebd64788b47b734bc35d1b}} 
-std\+::string {\bfseries get\+Address} () const
+std\+::string \hyperlink{classuser_af465b08f416163c5c04c80f5028670bc}{get\+Address} () const 
 \item 
 bool \hyperlink{classuser_ad62b7343f368a96742b9e48332ef91af}{borrow\+Book} (\hyperlink{classbook}{book} $\ast$book\+To\+Borrow)
 \item 
@@ -24,78 +22,137 @@ bool \hyperlink{classuser_adb88e0898e2024231a9f2852893469ac}{return\+Book} (\hyp
 \item 
 std\+::vector$<$ \hyperlink{classbook}{book} $>$ \hyperlink{classuser_a9e436323a3549a846d342ba313b6bf0e}{get\+Borrowed\+Books} ()
 \item 
-bool \hyperlink{classuser_aa683f6e1dbaaa382dc62eae8f33e9b08}{operator==} (const \hyperlink{classuser}{user} \&other) const
+bool \hyperlink{classuser_a340eedf07b7ff68a3fa4c77cd7511fc2}{operator==} (const \hyperlink{classuser}{user} \&other) const 
 \end{DoxyCompactItemize}
 
 
 \subsubsection{Detailed Description}
-this class provides all the information that is needed to manage a user each user has a name, address information and a systemwide unique id the user class also manages the books the user currently borrows 
+\begin{DoxyAuthor}{Author}
+Leonid Antipo 
+
+Alyona Buyukli 
+
+Karol Czopek 
+
+Levin Palm This class provides all the information that is needed to manage a user. Each user is identifed by a name, address information and a systemwide unique id. To keep the id unique one should use \hyperlink{classlibrary_aa6ec346e2b49ee2a78b1c8f5ebbf7f79}{library\+::register\+User()} to generate a user. The user class also holds a list of books this user is currently borrowing. 
+\end{DoxyAuthor}
+
 
 \subsubsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{classuser_aeaedee1afa1e244cd27028ee2e37ab4d}\label{classuser_aeaedee1afa1e244cd27028ee2e37ab4d}} 
+\hypertarget{classuser_aeaedee1afa1e244cd27028ee2e37ab4d}{\index{user@{user}!user@{user}}
 \index{user@{user}!user@{user}}
-\index{user@{user}!user@{user}}
-\paragraph{\texorpdfstring{user()}{user()}}
-{\footnotesize\ttfamily user\+::user (\begin{DoxyParamCaption}\item[{unsigned int}]{user\+ID,  }\item[{std\+::string}]{name,  }\item[{std\+::string}]{address }\end{DoxyParamCaption})}
+\paragraph[{user}]{\setlength{\rightskip}{0pt plus 5cm}user\+::user (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{user\+I\+D, }
+\item[{std\+::string}]{name, }
+\item[{std\+::string}]{address}
+\end{DoxyParamCaption}
+)}}\label{classuser_aeaedee1afa1e244cd27028ee2e37ab4d}
+Create a new user with a user\+I\+D.
 
-create a new user with a user\+ID 
+
 \begin{DoxyParams}{Parameters}
-{\em user\+ID} & the unique id (for uniqueness this should be assigned by register\+User() \\
+{\em user\+I\+D} & The unique id. (for uniqueness this should be assigned by \hyperlink{classlibrary_aa6ec346e2b49ee2a78b1c8f5ebbf7f79}{library\+::register\+User()}) \\
 \hline
-{\em name} & the real name of this user \\
+{\em name} & The full name of this user. \\
 \hline
-{\em address} & the address information of this user \\
+{\em address} & The address information of this user.\\
 \hline
 \end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Leonid Antipo 
+
+Alyona Buyukli 
+
+Karol Czopek 
+
+Levin Palm 
+\end{DoxyAuthor}
 
 
 \subsubsection{Member Function Documentation}
-\mbox{\Hypertarget{classuser_ad62b7343f368a96742b9e48332ef91af}\label{classuser_ad62b7343f368a96742b9e48332ef91af}} 
-\index{user@{user}!borrow\+Book@{borrow\+Book}}
+\hypertarget{classuser_ad62b7343f368a96742b9e48332ef91af}{\index{user@{user}!borrow\+Book@{borrow\+Book}}
 \index{borrow\+Book@{borrow\+Book}!user@{user}}
-\paragraph{\texorpdfstring{borrow\+Book()}{borrowBook()}}
-{\footnotesize\ttfamily bool user\+::borrow\+Book (\begin{DoxyParamCaption}\item[{\hyperlink{classbook}{book} $\ast$}]{book\+To\+Borrow }\end{DoxyParamCaption})}
-
-This method allows this user to borrow a book
+\paragraph[{borrow\+Book}]{\setlength{\rightskip}{0pt plus 5cm}bool user\+::borrow\+Book (
+\begin{DoxyParamCaption}
+\item[{{\bf book} $\ast$}]{book\+To\+Borrow}
+\end{DoxyParamCaption}
+)}}\label{classuser_ad62b7343f368a96742b9e48332ef91af}
+This method allows this user to borrow a book.
 
 
 \begin{DoxyParams}{Parameters}
-{\em book\+To\+Borrow} & A pointer to the book this user wants to borrow \\
+{\em book\+To\+Borrow} & A pointer to the book this user wants to borrow. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-true on success, false if this user cant borrow this book 
+Returns true on success. Returns if this user has too many books or this book is not available. 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classuser_a9e436323a3549a846d342ba313b6bf0e}\label{classuser_a9e436323a3549a846d342ba313b6bf0e}} 
-\index{user@{user}!get\+Borrowed\+Books@{get\+Borrowed\+Books}}
+\hypertarget{classuser_af465b08f416163c5c04c80f5028670bc}{\index{user@{user}!get\+Address@{get\+Address}}
+\index{get\+Address@{get\+Address}!user@{user}}
+\paragraph[{get\+Address}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string user\+::get\+Address (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classuser_af465b08f416163c5c04c80f5028670bc}
+\begin{DoxyReturn}{Returns}
+Returns the address information of this user. 
+\end{DoxyReturn}
+\hypertarget{classuser_a9e436323a3549a846d342ba313b6bf0e}{\index{user@{user}!get\+Borrowed\+Books@{get\+Borrowed\+Books}}
 \index{get\+Borrowed\+Books@{get\+Borrowed\+Books}!user@{user}}
-\paragraph{\texorpdfstring{get\+Borrowed\+Books()}{getBorrowedBooks()}}
-{\footnotesize\ttfamily std\+::vector$<$ \hyperlink{classbook}{book} $>$ user\+::get\+Borrowed\+Books (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+\paragraph[{get\+Borrowed\+Books}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$ {\bf book} $>$ user\+::get\+Borrowed\+Books (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classuser_a9e436323a3549a846d342ba313b6bf0e}
+Return all books.
 
 \begin{DoxyReturn}{Returns}
-a list containing all the books that this user borrows 
+A list containing all the books that this user borrows. 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classuser_aa683f6e1dbaaa382dc62eae8f33e9b08}\label{classuser_aa683f6e1dbaaa382dc62eae8f33e9b08}} 
-\index{user@{user}!operator==@{operator==}}
+\hypertarget{classuser_abdaf43e8172ce998e02f3b2d8c52ea3a}{\index{user@{user}!get\+Name@{get\+Name}}
+\index{get\+Name@{get\+Name}!user@{user}}
+\paragraph[{get\+Name}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string user\+::get\+Name (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classuser_abdaf43e8172ce998e02f3b2d8c52ea3a}
+\begin{DoxyReturn}{Returns}
+Returns the full name of this user. 
+\end{DoxyReturn}
+\hypertarget{classuser_ad913a52f6e73e4e2fef4cdc28256f123}{\index{user@{user}!get\+User\+I\+D@{get\+User\+I\+D}}
+\index{get\+User\+I\+D@{get\+User\+I\+D}!user@{user}}
+\paragraph[{get\+User\+I\+D}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int user\+::get\+User\+I\+D (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classuser_ad913a52f6e73e4e2fef4cdc28256f123}
+\begin{DoxyReturn}{Returns}
+Returns the user id of this user. 
+\end{DoxyReturn}
+\hypertarget{classuser_a340eedf07b7ff68a3fa4c77cd7511fc2}{\index{user@{user}!operator==@{operator==}}
 \index{operator==@{operator==}!user@{user}}
-\paragraph{\texorpdfstring{operator==()}{operator==()}}
-{\footnotesize\ttfamily bool user\+::operator== (\begin{DoxyParamCaption}\item[{const \hyperlink{classuser}{user} \&}]{other }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
-
-the == operator is valid on users a user is valid to another user if their ids are identical \mbox{\Hypertarget{classuser_adb88e0898e2024231a9f2852893469ac}\label{classuser_adb88e0898e2024231a9f2852893469ac}} 
-\index{user@{user}!return\+Book@{return\+Book}}
+\paragraph[{operator==}]{\setlength{\rightskip}{0pt plus 5cm}bool user\+::operator== (
+\begin{DoxyParamCaption}
+\item[{const {\bf user} \&}]{other}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classuser_a340eedf07b7ff68a3fa4c77cd7511fc2}
+the == operator is valid on users a user is valid to another user if their ids are identical \hypertarget{classuser_adb88e0898e2024231a9f2852893469ac}{\index{user@{user}!return\+Book@{return\+Book}}
 \index{return\+Book@{return\+Book}!user@{user}}
-\paragraph{\texorpdfstring{return\+Book()}{returnBook()}}
-{\footnotesize\ttfamily bool user\+::return\+Book (\begin{DoxyParamCaption}\item[{\hyperlink{classbook}{book} $\ast$}]{book\+To\+Return }\end{DoxyParamCaption})}
-
-this method allows the user to return a book to the library it is verified that he borrowed that book and that this book belongs to this library
+\paragraph[{return\+Book}]{\setlength{\rightskip}{0pt plus 5cm}bool user\+::return\+Book (
+\begin{DoxyParamCaption}
+\item[{{\bf book} $\ast$}]{book\+To\+Return}
+\end{DoxyParamCaption}
+)}}\label{classuser_adb88e0898e2024231a9f2852893469ac}
+This method allows the user to return a book to the library. The method verifies that the book is actually borrowed and that this book belongs to this library.
 
 
 \begin{DoxyParams}{Parameters}
-{\em book\+To\+Return} & the book that should be returned \\
+{\em book\+To\+Return} & The book that should be returned. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-true on success, false if this book can not be returned because it does not belong here or is not borrowed 
+Returns true on success. Returns false if this book can not be returned because it does not belong here or is not borrowed. 
 \end{DoxyReturn}
 
 

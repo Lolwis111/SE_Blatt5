@@ -1,82 +1,72 @@
-#include "book.h"
+/**
+ * @author Leonid Antipov
+ * @author Alyona Buyukli
+ * @author Karol Czopek
+ * @author Levin Palm
+ */
+
 #include <string>
 #include <iostream>
 
-/**
- * Create a new book object
- * 
- * @param title The title of the book
- * @param author The author of the book
- * @param isbn The unique isb number of the book
- */
+#include "book.h"
+#include "constants.h"
+
 book::book(std::string title, std::string author, unsigned long isbn)
 {
-    _borrowedByUserID = 0;
-    _author = author;
+    _borrowedByUserID = INVALID_USER_ID; // no one borrows a new book
+    _author = author; // copy the three attributes
     _title = title;
     _isbn = isbn;
 
     _isRetired = false; // a new book is new and therefore not retiered
     _isBorrowed = false; // on  creation a book is not borrowed to anyone
     _timesBorrowed = 0; // a new book has never been borrowed before
-    _borrowedByUserID = 0;
 }
 
-/**
- * borrow this book
- * this will set the internal variables to indicate that this book is borrowed
- * this will also update the times this is borrowed and retieres the book if needed
- * 
- * @param userID the ID of the user who wants to borrow this book
- * @return true if the borrowing was successful, false if the book is already borrowed or retired
- */
 bool book::borrow(unsigned long userID)
 {
+    // check if book is currently borrowed or retired
     if(_isBorrowed == true || _isRetired == true)
     {
+        // if yes, we can't lend this book.
         return false;
     }
     
-    _isBorrowed = true;
+    _isBorrowed = true; // set status to borrowed
 
-    _borrowedByUserID = userID;
+    _borrowedByUserID = userID; // save which user has this book
 
-    _timesBorrowed++;
+    _timesBorrowed++; // increase timesBorrowed
     
-    return true;
+    return true; // success
 }
 
-/**
- * bring this book back
- * this will set the internal status to not borrowed
- * will also manage the retirement process
- * 
- * @return true on success, false if the book is currently not borrowed
- */
 bool book::bringBack()
 { 
+    // check if the book is borrowed right now
     if (_isBorrowed == false)
     {
+        // if not its an error
         return false;
     }
 
-    if (_timesBorrowed == 50)
+    // if the limit for borrowing is reached
+    if (_timesBorrowed == MAX_TIMES_BORROWED)
     {
+        // the book gets retired
         _isRetired = true;
     }
 
-    _borrowedByUserID = 0;
+    // after bringing it back, it can be borrowed again
+    _borrowedByUserID = INVALID_USER_ID;
     _isBorrowed = false;
 
+    // success
     return true;
 }
 
-/**
- * Creates a string representation of this book
- * 
- * @return String in form [author]: [title] ([isbn])
- */
 std::string book::toString()
 {
+    // build the string according to documentation
     return _author + ": " + _title + " (" + std::to_string(_isbn) + ")";
 }

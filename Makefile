@@ -20,5 +20,18 @@ main: main.cpp
 link: main.o book.o user.o library.o
 	$(LD) $(LFLAGS) -o library main.o book.o user.o library.o
 
-clean:
+clean: binaries docClean
+
+binaries:
 	rm -f library *.o
+	
+docClean:
+	make clean -C latex/
+
+doc: doxygen pdf
+
+doxygen:
+	doxygen doxygen.conf
+
+pdf:
+	make -C latex/

@@ -1,88 +1,78 @@
-#include <string>
-#include "book.h"
-#include "user.h"
-#include "library.h"
+/**
+ * @author Leonid Antipov
+ * @author Alyona Buyukli
+ * @author Karol Czopek
+ * @author Levin Palm
+ */
 
+#include <string>
 #include <algorithm>
 #include <iostream>
 #include <vector>
 #include <map>
 
-/**
- * creates a new library with 0
- * registered users and 0 books
- */
+#include "book.h"
+#include "user.h"
+#include "library.h"
+#include "constants.h"
+
 library::library()
 {
+    // at the beginning there are no books and no users
     _userCount = 0;
     _bookCount = 0;
 }
 
-/**
- * internal method to find a book by its isb number
- * @param isbn the number to look for
- * @return an iterator of this book in the internal book structure
- */
 std::vector<book>::iterator library::searchByISBN(unsigned long isbn)
 {
+    // do a simple linear search, check each element
     std::vector<book>::iterator bookIt;
     for(bookIt = _books.begin(); bookIt < _books.end(); ++bookIt)
     {
         if(bookIt->getISBN() == isbn)
         {
+            // and return if anything is found
             return bookIt;
         }
     }
     
+    // else indicate that nothing is found by returning end()
     return _books.end();
 }
 
-/**
- * This method registers a new user in this library
- * 
- * @param name The name the new user has
- * @param address The address the new user has
- * @return the ID the new user will have
- */
 unsigned int library::registerUser(std::string name, std::string address)
 {
+    // create a new user, starting with ID 1
+    // and name + address
     user newUser(_userCount + 1, name, address);
     
+    // add user to the userlist
     _users.push_back(newUser);
 
+    // increment usercount
     _userCount++;
 
+    // return the id this new user will have
     return newUser.getUserID();
 }
 
-/**
- * Search by the user id for a user in the system
- * 
- * @param userID The user id that should be searched
- * @return A pointer to the user with the given id, or nullptr if no user with this id exists
- */
 user* library::findUserById(unsigned int userID)
 {
+    // do a linear search on all users
     for(size_t index = 0; index < _userCount; index++)
     {
+        // if the id matches
         if(_users[index].getUserID() == userID)
         {
+            // return a pointer
             return &_users[index];
         }
     }
     
+    // if nothing is found, return nullptr
     return nullptr;
 }
 
-/**
- * This method allows a user to borrow book a from the library
- * The method checks if the user is registerd and if the book is
- * available in this library.
- * 
- * @param bookToBorrow A pointer to the book that should be borrowed
- * @param borrowingUser A pointer to the user that wants to borrow the book
- * @return true if successful, false if book not available or user not registered
- */
 bool library::borrowBook(book *bookToBorrow, user *borrowingUser)
 {
     // check if the user is registered
@@ -100,16 +90,6 @@ bool library::borrowBook(book *bookToBorrow, user *borrowingUser)
     return borrowingUser->borrowBook(bookToBorrow);
 }
 
-/**
- * This method allows a user to give a borrowed book back to the library
- * The method checks if the user is registerd and if the book
- * belongs to this library.
- * 
- * @param bookToReturn A pointer to the book that the user wants to hand in
- * @param borrowingUser A pointer to user that currently borrows this book
- * @return true if successful, false if book does not belong to this
- *         library, or book is not being borrowed or user not registered
- */
 bool library::returnBook(book *bookToReturn, user *borrowingUser)
 {
     // check if the user is registered
@@ -127,29 +107,28 @@ bool library::returnBook(book *bookToReturn, user *borrowingUser)
     return borrowingUser->returnBook(bookToReturn);
 }
 
-/**
- * This method adds a given book to the library.
- * Books that are already in the library will be ignored
- * 
- * @param bookToAdd the book that should be added to the library
- */
 void library::addBookToLibrary(book bookToAdd)
 {
+    // check if the book already exists in this library
     auto bookIterator = std::find(_books.begin(), _books.end(), bookToAdd);
 
     if(bookIterator == _books.end())
     {
+        // if no, add it to the list of books
         _books.push_back(bookToAdd);
+        
+        // and increment the book count
         _bookCount++;
+        
+        // check if the book is in the wishList
+        if(_wishList.find(bookToAdd) != _wishList.end())
+        {
+            removeBookFromWishList(bookToAdd);
+        }
     }
 }
 
-/**
- * This methods allows a user to wish for a certain book to be added to the library
- * 
- * @param wishingUser The user that wishes for the book
- * @param bookWishedFor The book that the user wishes for
- */
+
 void library::wishForABook(user wishingUser, book bookWishedFor)
 {
     if (searchByISBN(bookWishedFor.getISBN()) != _books.end() 
@@ -177,7 +156,7 @@ void library::wishForABook(user wishingUser, book bookWishedFor)
         _wishList[bookWishedFor].push_back(wishingUser);
 
         // a retired book only needs 2 wishes
-        if (bookWishedFor.isRetired() == true && _wishList[bookWishedFor].size() == 2)
+        if (bookWishedFor.isRetired() == true && _wishList[bookWishedFor].size() == WISHES_NEEDED_RETIRED_BOOK)
         {
             // create a new instance of the book that is retired (aka buy a new one)
             book newCopyOfBook(
@@ -194,7 +173,7 @@ void library::wishForABook(user wishingUser, book bookWishedFor)
             // and remove it from the wishlist
             removeBookFromWishList(bookWishedFor);
         }
-        else if (_wishList[bookWishedFor].size() == 5) // a new book needs 5 wishes
+        else if (_wishList[bookWishedFor].size() == WISHES_NEEDED_NEW_BOOK) // a new book needs 5 wishes
         {
             // insert the book into the library
             addBookToLibrary(bookWishedFor);
@@ -206,80 +185,55 @@ void library::wishForABook(user wishingUser, book bookWishedFor)
     // else: user is found: we ignore his request
 }
 
-/**
- * internal method to remove a book from the wish list after it has
- * been added to the library. It is not checked if the book
- * is actually in the wishList
- * 
- * @param bookToRemove the book that should be removed from the library
- */
 void library::removeBookFromWishList(book bookToRemove)
 {
+    // find the book
     auto bookIterator = _wishList.find(bookToRemove);
     
+    // and delete it
     _wishList.erase(bookIterator);
 }
 
-/**
- * Return all users
- * 
- * @return a hard copy of the list of users that are currently registered in the library
- */
 std::vector<user> library::getAllUsers()
 {
+    // create a hard copy and return that
     return std::vector<user>(_users);
 }
 
-/**
- * Return all books
- * 
- * @return a hard copy of the list of books that are currently available in the library
- */
 std::vector<book> library::getAllBooks()
 {
+    // create a new list
     std::vector<book> nonRetiredBooks;
     
-    for(int i = 0; i < _books.size(); i++)
+    for(size_t i = 0; i < _books.size(); i++)
     {
+        // find all the books that are not retired
         if(_books[i].isRetired() == true)
         {
+            // and add them to the new list
             nonRetiredBooks.push_back(_books[i]);
         }
     }
     
+    // return the new list
     return nonRetiredBooks;
 }
 
-/**
- * Given a book this will return which user currently borrows this book
- * 
- * @param borrowedBook the book to check this on
- * @return a pointer to the user that currently borrows this book
- */
 user* library::getUserWhoBorrowsBook(book borrowedBook)
 {
+    // get the userID from the book
     unsigned long userID = borrowedBook.getBorrowingUserID();
     
+    // return the user belonging to this ID
     return findUserById(userID);
 }
 
-/**
- * check how many times a book has been borrowed
- * 
- * @param bookToCheck the book to check this on
- * @return the number of times the book has been borrowed
- */
 unsigned int library::getTimesBorrowed(book bookToCheck)
 {
+    // return how many times it has been borrowed
     return bookToCheck.getTimesBorrowed();
 }
 
-/**
- * check how many times users wished for a given book
- * 
- * @param bookToCheck The book to check this on
- * @return the number of times individual users wished for this book
- */
 unsigned int library::getTimesWishedFor(book bookToCheck)
 {
     // try to find the book in the wishlist

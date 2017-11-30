@@ -1,5 +1,6 @@
-\hypertarget{classbook}{}\subsection{book Class Reference}
+\hypertarget{classbook}{\subsection{book Class Reference}
 \label{classbook}\index{book@{book}}
+}
 
 
 {\ttfamily \#include $<$book.\+h$>$}
@@ -9,109 +10,189 @@
 \item 
 \hyperlink{classbook_a5114952cb9ce13311c70a7da4a84f65e}{book} (std\+::string title, std\+::string author, unsigned long isbn)
 \item 
-bool \hyperlink{classbook_a25a20807ec84c3dd73a2633a4765d1bf}{borrow} (unsigned long user\+ID)
+bool \hyperlink{classbook_a25a20807ec84c3dd73a2633a4765d1bf}{borrow} (unsigned long user\+I\+D)
 \item 
 bool \hyperlink{classbook_a0db6fec61d11dfb27f20403569289bbb}{bring\+Back} ()
 \item 
-\mbox{\Hypertarget{classbook_a467791863f6159f6e2cd5ae1486d3f6d}\label{classbook_a467791863f6159f6e2cd5ae1486d3f6d}} 
-std\+::string {\bfseries get\+Title} () const
+std\+::string \hyperlink{classbook_a9f43e517657537cdec67383874f7e2f7}{get\+Title} () const 
 \item 
-\mbox{\Hypertarget{classbook_a760484e4bc14cb11cec145739747f22a}\label{classbook_a760484e4bc14cb11cec145739747f22a}} 
-std\+::string {\bfseries get\+Author} () const
+std\+::string \hyperlink{classbook_a6315686670239c79edf19a4989e5ba0c}{get\+Author} () const 
 \item 
-\mbox{\Hypertarget{classbook_a5838258e345c651f1cb899417f56a1e7}\label{classbook_a5838258e345c651f1cb899417f56a1e7}} 
-unsigned long {\bfseries get\+I\+S\+BN} () const
-\item 
-\mbox{\Hypertarget{classbook_ae4499dba0f39ea4136d670d298bf56af}\label{classbook_ae4499dba0f39ea4136d670d298bf56af}} 
-bool {\bfseries is\+Retired} () const
-\item 
-\mbox{\Hypertarget{classbook_aa76dd75565c10ec36c0f4649341b4fa1}\label{classbook_aa76dd75565c10ec36c0f4649341b4fa1}} 
-bool {\bfseries is\+Borrowed} () const
-\item 
-\mbox{\Hypertarget{classbook_a58f5e200f3433fec3536a0d1c47df6ba}\label{classbook_a58f5e200f3433fec3536a0d1c47df6ba}} 
-unsigned int {\bfseries get\+Times\+Borrowed} () const
-\item 
-\mbox{\Hypertarget{classbook_a2667d5ddba56407c1439128ed2d3add2}\label{classbook_a2667d5ddba56407c1439128ed2d3add2}} 
-unsigned long {\bfseries get\+Borrowing\+User\+ID} () const
+unsigned long \hyperlink{classbook_a3b91f6e35b42d691b563b709e1440030}{get\+I\+S\+B\+N} () const 
 \item 
 std\+::string \hyperlink{classbook_ac673df10b3812cf593f02a7c9967a947}{to\+String} ()
 \item 
-bool \hyperlink{classbook_a373aa61d941709b14481d3515cc229fe}{operator$<$} (const \hyperlink{classbook}{book} \&other) const
+bool \hyperlink{classbook_a526ad98158cb5beed91c81408bbb669e}{is\+Retired} () const 
 \item 
-bool \hyperlink{classbook_a6b9ded1510aa5ca62f00f5cbc650200e}{operator==} (const \hyperlink{classbook}{book} \&other) const
+bool \hyperlink{classbook_a6dee5eea9f365e991dcdc2b91d491f5a}{is\+Borrowed} () const 
+\item 
+unsigned int \hyperlink{classbook_a662ce1b3c7bc720749a758c535f07de8}{get\+Times\+Borrowed} () const 
+\item 
+unsigned long \hyperlink{classbook_a87d5d461e8e248a5f5d6abe1abad2170}{get\+Borrowing\+User\+I\+D} () const 
+\item 
+bool \hyperlink{classbook_a2a3ee05162274ddc9c12e87f21cfa1c3}{operator$<$} (const \hyperlink{classbook}{book} \&other) const 
+\item 
+bool \hyperlink{classbook_a38a765453e0934f70cf3d2268adb6e39}{operator==} (const \hyperlink{classbook}{book} \&other) const 
 \end{DoxyCompactItemize}
 
 
 \subsubsection{Detailed Description}
-book provides the representation of a book each book has a title, an author and an isb number the isb number is supposed to be unique 
+book provides the representation of a book. Each book has a title, an author and an I\+S\+B\+N. The I\+S\+B\+N is unique. 
 
 \subsubsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{classbook_a5114952cb9ce13311c70a7da4a84f65e}\label{classbook_a5114952cb9ce13311c70a7da4a84f65e}} 
+\hypertarget{classbook_a5114952cb9ce13311c70a7da4a84f65e}{\index{book@{book}!book@{book}}
 \index{book@{book}!book@{book}}
-\index{book@{book}!book@{book}}
-\paragraph{\texorpdfstring{book()}{book()}}
-{\footnotesize\ttfamily book\+::book (\begin{DoxyParamCaption}\item[{std\+::string}]{title,  }\item[{std\+::string}]{author,  }\item[{unsigned long}]{isbn }\end{DoxyParamCaption})}
-
-Create a new book object
+\paragraph[{book}]{\setlength{\rightskip}{0pt plus 5cm}book\+::book (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{title, }
+\item[{std\+::string}]{author, }
+\item[{unsigned long}]{isbn}
+\end{DoxyParamCaption}
+)}}\label{classbook_a5114952cb9ce13311c70a7da4a84f65e}
+Create a new book object.
 
 
 \begin{DoxyParams}{Parameters}
-{\em title} & The title of the book \\
+{\em title} & The title of the book. \\
 \hline
-{\em author} & The author of the book \\
+{\em author} & The author of the book. \\
 \hline
-{\em isbn} & The unique isb number of the book \\
+{\em isbn} & The unique I\+S\+B\+N of the book.\\
 \hline
 \end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Leonid Antipo 
+
+Alyona Buyukli 
+
+Karol Czopek 
+
+Levin Palm 
+\end{DoxyAuthor}
 
 
 \subsubsection{Member Function Documentation}
-\mbox{\Hypertarget{classbook_a25a20807ec84c3dd73a2633a4765d1bf}\label{classbook_a25a20807ec84c3dd73a2633a4765d1bf}} 
-\index{book@{book}!borrow@{borrow}}
+\hypertarget{classbook_a25a20807ec84c3dd73a2633a4765d1bf}{\index{book@{book}!borrow@{borrow}}
 \index{borrow@{borrow}!book@{book}}
-\paragraph{\texorpdfstring{borrow()}{borrow()}}
-{\footnotesize\ttfamily bool book\+::borrow (\begin{DoxyParamCaption}\item[{unsigned long}]{user\+ID }\end{DoxyParamCaption})}
-
-borrow this book this will set the internal variables to indicate that this book is borrowed this will also update the times this is borrowed and retieres the book if needed
+\paragraph[{borrow}]{\setlength{\rightskip}{0pt plus 5cm}bool book\+::borrow (
+\begin{DoxyParamCaption}
+\item[{unsigned long}]{user\+I\+D}
+\end{DoxyParamCaption}
+)}}\label{classbook_a25a20807ec84c3dd73a2633a4765d1bf}
+Let user with given I\+D borrow this book. This method will automatically increase times\+Borrowed. This method verifies that the book is currently available. After successfully executing this, \hyperlink{classbook_a6dee5eea9f365e991dcdc2b91d491f5a}{is\+Borrowed()} will return true.
 
 
 \begin{DoxyParams}{Parameters}
-{\em user\+ID} & the ID of the user who wants to borrow this book \\
+{\em user\+I\+D} & The I\+D of the user who wants to borrow this book.\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-true if the borrowing was successful, false if the book is already borrowed or retired 
+true on success, false if the book is already borrowed or retired 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classbook_a0db6fec61d11dfb27f20403569289bbb}\label{classbook_a0db6fec61d11dfb27f20403569289bbb}} 
-\index{book@{book}!bring\+Back@{bring\+Back}}
+\hypertarget{classbook_a0db6fec61d11dfb27f20403569289bbb}{\index{book@{book}!bring\+Back@{bring\+Back}}
 \index{bring\+Back@{bring\+Back}!book@{book}}
-\paragraph{\texorpdfstring{bring\+Back()}{bringBack()}}
-{\footnotesize\ttfamily bool book\+::bring\+Back (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
-bring this book back this will set the internal status to not borrowed will also manage the retirement process
+\paragraph[{bring\+Back}]{\setlength{\rightskip}{0pt plus 5cm}bool book\+::bring\+Back (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classbook_a0db6fec61d11dfb27f20403569289bbb}
+This methods hands the book back to the library after being borrowed. This will check if the is borrowed, if no its an error. After executing this, \hyperlink{classbook_a6dee5eea9f365e991dcdc2b91d491f5a}{is\+Borrowed()} will return false.
 
 \begin{DoxyReturn}{Returns}
-true on success, false if the book is currently not borrowed 
+Returns true on success. Returns false if an error occours. 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classbook_a373aa61d941709b14481d3515cc229fe}\label{classbook_a373aa61d941709b14481d3515cc229fe}} 
-\index{book@{book}!operator$<$@{operator$<$}}
+\hypertarget{classbook_a6315686670239c79edf19a4989e5ba0c}{\index{book@{book}!get\+Author@{get\+Author}}
+\index{get\+Author@{get\+Author}!book@{book}}
+\paragraph[{get\+Author}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string book\+::get\+Author (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classbook_a6315686670239c79edf19a4989e5ba0c}
+\begin{DoxyReturn}{Returns}
+Returns the author of this book. 
+\end{DoxyReturn}
+\hypertarget{classbook_a87d5d461e8e248a5f5d6abe1abad2170}{\index{book@{book}!get\+Borrowing\+User\+I\+D@{get\+Borrowing\+User\+I\+D}}
+\index{get\+Borrowing\+User\+I\+D@{get\+Borrowing\+User\+I\+D}!book@{book}}
+\paragraph[{get\+Borrowing\+User\+I\+D}]{\setlength{\rightskip}{0pt plus 5cm}unsigned long book\+::get\+Borrowing\+User\+I\+D (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classbook_a87d5d461e8e248a5f5d6abe1abad2170}
+\begin{DoxyReturn}{Returns}
+Returns the I\+D of the user who currently borrows this book. I\+N\+V\+A\+L\+I\+D\+\_\+\+U\+S\+E\+R\+\_\+\+I\+D is returned, if the book is currently not borrowed. 
+\end{DoxyReturn}
+\hypertarget{classbook_a3b91f6e35b42d691b563b709e1440030}{\index{book@{book}!get\+I\+S\+B\+N@{get\+I\+S\+B\+N}}
+\index{get\+I\+S\+B\+N@{get\+I\+S\+B\+N}!book@{book}}
+\paragraph[{get\+I\+S\+B\+N}]{\setlength{\rightskip}{0pt plus 5cm}unsigned long book\+::get\+I\+S\+B\+N (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classbook_a3b91f6e35b42d691b563b709e1440030}
+\begin{DoxyReturn}{Returns}
+Returns the I\+S\+B\+N of this book. 
+\end{DoxyReturn}
+\hypertarget{classbook_a662ce1b3c7bc720749a758c535f07de8}{\index{book@{book}!get\+Times\+Borrowed@{get\+Times\+Borrowed}}
+\index{get\+Times\+Borrowed@{get\+Times\+Borrowed}!book@{book}}
+\paragraph[{get\+Times\+Borrowed}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int book\+::get\+Times\+Borrowed (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classbook_a662ce1b3c7bc720749a758c535f07de8}
+\begin{DoxyReturn}{Returns}
+Returns an unsigned integer indicating how many times this books has been borrowed before. 
+\end{DoxyReturn}
+\hypertarget{classbook_a9f43e517657537cdec67383874f7e2f7}{\index{book@{book}!get\+Title@{get\+Title}}
+\index{get\+Title@{get\+Title}!book@{book}}
+\paragraph[{get\+Title}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string book\+::get\+Title (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classbook_a9f43e517657537cdec67383874f7e2f7}
+\begin{DoxyReturn}{Returns}
+Returns the title of this book. 
+\end{DoxyReturn}
+\hypertarget{classbook_a6dee5eea9f365e991dcdc2b91d491f5a}{\index{book@{book}!is\+Borrowed@{is\+Borrowed}}
+\index{is\+Borrowed@{is\+Borrowed}!book@{book}}
+\paragraph[{is\+Borrowed}]{\setlength{\rightskip}{0pt plus 5cm}bool book\+::is\+Borrowed (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classbook_a6dee5eea9f365e991dcdc2b91d491f5a}
+\begin{DoxyReturn}{Returns}
+Returns a boolean indicating wether or not this book is borrowed right now. 
+\end{DoxyReturn}
+\hypertarget{classbook_a526ad98158cb5beed91c81408bbb669e}{\index{book@{book}!is\+Retired@{is\+Retired}}
+\index{is\+Retired@{is\+Retired}!book@{book}}
+\paragraph[{is\+Retired}]{\setlength{\rightskip}{0pt plus 5cm}bool book\+::is\+Retired (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classbook_a526ad98158cb5beed91c81408bbb669e}
+\begin{DoxyReturn}{Returns}
+Returns a boolean indicating wether or not this book is retired. 
+\end{DoxyReturn}
+\hypertarget{classbook_a2a3ee05162274ddc9c12e87f21cfa1c3}{\index{book@{book}!operator$<$@{operator$<$}}
 \index{operator$<$@{operator$<$}!book@{book}}
-\paragraph{\texorpdfstring{operator$<$()}{operator<()}}
-{\footnotesize\ttfamily bool book\+::operator$<$ (\begin{DoxyParamCaption}\item[{const \hyperlink{classbook}{book} \&}]{other }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
-
-the $<$ operator is valid on a book a book is smaller than a book if its isb number is smaller \mbox{\Hypertarget{classbook_a6b9ded1510aa5ca62f00f5cbc650200e}\label{classbook_a6b9ded1510aa5ca62f00f5cbc650200e}} 
-\index{book@{book}!operator==@{operator==}}
+\paragraph[{operator$<$}]{\setlength{\rightskip}{0pt plus 5cm}bool book\+::operator$<$ (
+\begin{DoxyParamCaption}
+\item[{const {\bf book} \&}]{other}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classbook_a2a3ee05162274ddc9c12e87f21cfa1c3}
+The '$<$' operator is valid on a book. A book b1 is smaller than a book b2, if b1's I\+S\+B\+N is smaller than b2's I\+S\+B\+N. \hypertarget{classbook_a38a765453e0934f70cf3d2268adb6e39}{\index{book@{book}!operator==@{operator==}}
 \index{operator==@{operator==}!book@{book}}
-\paragraph{\texorpdfstring{operator==()}{operator==()}}
-{\footnotesize\ttfamily bool book\+::operator== (\begin{DoxyParamCaption}\item[{const \hyperlink{classbook}{book} \&}]{other }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
-
-the == operator is valid on a book a book is equal to another book if their isb numbers are equal \mbox{\Hypertarget{classbook_ac673df10b3812cf593f02a7c9967a947}\label{classbook_ac673df10b3812cf593f02a7c9967a947}} 
-\index{book@{book}!to\+String@{to\+String}}
+\paragraph[{operator==}]{\setlength{\rightskip}{0pt plus 5cm}bool book\+::operator== (
+\begin{DoxyParamCaption}
+\item[{const {\bf book} \&}]{other}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classbook_a38a765453e0934f70cf3d2268adb6e39}
+The == operator is valid on a book A book b1 is equal to another book b2, if their I\+S\+B\+Ns are equal. \hypertarget{classbook_ac673df10b3812cf593f02a7c9967a947}{\index{book@{book}!to\+String@{to\+String}}
 \index{to\+String@{to\+String}!book@{book}}
-\paragraph{\texorpdfstring{to\+String()}{toString()}}
-{\footnotesize\ttfamily std\+::string book\+::to\+String (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
-Creates a string representation of this book
+\paragraph[{to\+String}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string book\+::to\+String (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classbook_ac673df10b3812cf593f02a7c9967a947}
+Creates a string representation of this book.
 
 \begin{DoxyReturn}{Returns}
 String in form \mbox{[}author\mbox{]}\+: \mbox{[}title\mbox{]} (\mbox{[}isbn\mbox{]}) 
