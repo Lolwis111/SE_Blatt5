@@ -1,0 +1,11 @@
+Changelog
+-----------------------
+commit: morning 1
+
+user.h/user.cpp:
+    - added name and address to user
+    
+library.h/library.cpp:
+    - added findUserById to library (given the userID this will return a user-object)
+    - changed searchByISBN from binsearch to linsearch (reason: segfault)
+    - added removeBookFromWishList

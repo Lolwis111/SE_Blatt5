@@ -19,11 +19,15 @@ private:
     std::map<book,std::vector<user> > _wishList;
 
 	std::vector<book>::iterator searchByISBN(unsigned long isbn);
+    
+    void removeBookFromWishList(book book);
 
 public:
     library();
-
-    unsigned long registerUser();
+    
+    unsigned int registerUser();
+    user findUserById(unsigned int userID);
+    
     void wishForABook(user user, book book);
 	void addBookToLibrary(book book);
 

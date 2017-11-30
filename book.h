@@ -1,6 +1,8 @@
 #pragma once
+
 #include <string>
-#include "user.h"
+
+class user;
 
 class book
 {
@@ -33,4 +35,28 @@ public:
 	user *getBorrowingUser() const { return _borrowedBy;  };
 
     std::string toString();
+
+	bool operator<(const book& other) const 
+	{ 
+		if (other.getISBN() < _isbn)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	};
+
+	bool operator==(const book& other)
+	{
+		if (other.getISBN() == _isbn)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
 };

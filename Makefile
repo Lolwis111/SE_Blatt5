@@ -1,5 +1,5 @@
 CC=g++
-CFLAGS=-std=c++11 -O2 -Wall -Werror
+CFLAGS=-std=c++11 -O2 -Wall -Werror -ggdb
 LD=g++
 LFLAGS=
 

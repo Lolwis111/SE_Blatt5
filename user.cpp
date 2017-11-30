@@ -5,11 +5,12 @@
 /**
  * create a new user with a userID
  * the userID is assigned by the library
- * TODO: add name, contact info etc.
  */
-user::user(unsigned int userID)
+user::user(unsigned int userID, std::string name, std::string address)
 {
     _userID = userID;
+    _name = name;
+    _address = address;
     _borrowedBookCount = 0; // a freshly registered user has no books borrowed
 }
 

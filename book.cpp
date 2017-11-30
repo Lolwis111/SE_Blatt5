@@ -17,30 +17,6 @@ book::book(std::string title, std::string author, unsigned long isbn)
     _timesBorrowed = 0; // a new book has never been borrowed before
 }
 
-bool operator==(const book& b1, const book& b2)
-{
-	if (b1.getISBN() == b2.getISBN())
-	{
-		return true;
-	}
-	else
-	{
-		return false;
-	}
-}
-
-bool operator<(const book& b1, const book& b2)
-{
-	if (b1.getISBN() < b2.getISBN())
-	{
-		return true;
-	}
-	else
-	{
-		return false;
-	}
-}
-
 /**
  * borrow this book
  * this will set the internal variables to indicate that this book is borrowed
